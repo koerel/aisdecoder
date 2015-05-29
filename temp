@@ -1,0 +1,34 @@
+NAME = message.NAME ? message.NAME : "";
+CALLSIGN = message.CALLSIGN ? message.CALLSIGN : "";
+TYPE = message.TYPE ? message.TYPE : "";
+A = message.A ? message.A : "";
+B = message.B ? message.B : "";
+C = message.C ? message.C : "";
+D = message.D ? message.D : "";
+DRAUGHT = message.DRAUGHT ? message.DRAUGHT : "";
+DEST = message.DEST ? message.DEST : "";
+ETA = message.ETA ? message.ETA : "";
+
+
+
+
+//MMSI = "";
+                    //TIME = "";
+                    //LONGITUDE = "";
+                    //LATITUDE = "";
+                    //COG = "";
+                    //SOG = "";
+                    //NAVSTAT = "";
+                    //IMO = "";
+                    //NAME = "";
+                    //CALLSIGN = "";
+                    //TYPE = "";
+                    //A = "";
+                    //B = "";
+                    //C = "";
+                    //D = "";
+                    //DRAUGHT = "";
+                    //DEST = "";
+                    //ETA = "";
+
+                    SELECT MAX(rowid) AS IMO,NAME,CALLSIGN,TYPE,A,B,C,D,DRAUGHT,DEST,ETA FROM messages WHERE MMSI = 205233890 LIMIT 1;
