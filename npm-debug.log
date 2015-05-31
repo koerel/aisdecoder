@@ -1,0 +1,270 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'aisdecoder' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose node symlink /usr/bin/node
+5 silly cache add args [ 'aisdecoder', null ]
+6 verbose cache add spec aisdecoder
+7 silly cache add parsed spec { raw: 'aisdecoder',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'aisdecoder',
+7 silly cache add   rawSpec: '',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 verbose addNamed aisdecoder@*
+9 silly addNamed semver.valid null
+10 silly addNamed semver.validRange *
+11 silly addNameRange { name: 'aisdecoder', range: '*', hasData: false }
+12 silly mapToRegistry name aisdecoder
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/aisdecoder
+16 verbose addNameRange registry:https://registry.npmjs.org/aisdecoder not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/aisdecoder
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 06:45:38
+20 verbose request id 87219148fbef2fc3
+21 verbose etag "E1T50J4RINH1KD9QQ5JMJ56CO"
+22 http request GET https://registry.npmjs.org/aisdecoder
+23 http 304 https://registry.npmjs.org/aisdecoder
+24 silly get cb [ 304,
+24 silly get   { date: 'Sat, 30 May 2015 06:45:39 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     'cache-control': 'max-age=60',
+24 silly get     etag: '"E1T50J4RINH1KD9QQ5JMJ56CO"',
+24 silly get     age: '0',
+24 silly get     connection: 'keep-alive',
+24 silly get     'x-served-by': 'cache-ams4141-AMS',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1432968339.371287,VS0,VE659',
+24 silly get     vary: 'Accept' } ]
+25 verbose etag https://registry.npmjs.org/aisdecoder from cache
+26 verbose get saving aisdecoder to /home/vagrant/.npm/registry.npmjs.org/aisdecoder/.cache.json
+27 silly addNameRange number 2 { name: 'aisdecoder', range: '*', hasData: true }
+28 silly addNameRange versions [ 'aisdecoder', [ '0.0.1', '0.0.2' ] ]
+29 verbose addNamed aisdecoder@0.0.2
+30 silly addNamed semver.valid 0.0.2
+31 silly addNamed semver.validRange 0.0.2
+32 silly cache afterAdd aisdecoder@0.0.2
+33 verbose afterAdd /home/vagrant/.npm/aisdecoder/0.0.2/package/package.json not in flight; writing
+34 verbose afterAdd /home/vagrant/.npm/aisdecoder/0.0.2/package/package.json written
+35 silly install resolved [ { name: 'aisdecoder',
+35 silly install resolved     description: 'Decode AIS messages to Javascript objects',
+35 silly install resolved     version: '0.0.2',
+35 silly install resolved     author: { name: 'Marius Kintel' },
+35 silly install resolved     repository: { type: 'git', url: 'https://github.com/kintel/aisdecoder.git' },
+35 silly install resolved     main: 'build/Release/aisdecoder.node',
+35 silly install resolved     scripts: { test: 'mocha --reporter spec', install: 'node-gyp rebuild' },
+35 silly install resolved     dependencies: {},
+35 silly install resolved     devDependencies: { should: '2.x', mocha: '1.x' },
+35 silly install resolved     engines: { node: '*' },
+35 silly install resolved     gypfile: true,
+35 silly install resolved     gitHead: 'b3d78dcf74ce60281f4df8fd1a4c5e2e1109bed8',
+35 silly install resolved     bugs: { url: 'https://github.com/kintel/aisdecoder/issues' },
+35 silly install resolved     homepage: 'https://github.com/kintel/aisdecoder',
+35 silly install resolved     _id: 'aisdecoder@0.0.2',
+35 silly install resolved     _shasum: '2dd98bcd05632eedce231fc5430d1a174fdc2571',
+35 silly install resolved     _from: 'aisdecoder@*',
+35 silly install resolved     _npmVersion: '1.4.14',
+35 silly install resolved     _npmUser: { name: 'kintel', email: 'marius@kintel.net' },
+35 silly install resolved     maintainers: [ [Object] ],
+35 silly install resolved     dist:
+35 silly install resolved      { shasum: '2dd98bcd05632eedce231fc5430d1a174fdc2571',
+35 silly install resolved        tarball: 'http://registry.npmjs.org/aisdecoder/-/aisdecoder-0.0.2.tgz' },
+35 silly install resolved     directories: {},
+35 silly install resolved     _resolved: 'https://registry.npmjs.org/aisdecoder/-/aisdecoder-0.0.2.tgz',
+35 silly install resolved     readme: 'ERROR: No README data found!' } ]
+36 info install aisdecoder@0.0.2 into /home/vagrant/Code/aisdecoder
+37 info installOne aisdecoder@0.0.2
+38 verbose installOne of aisdecoder to /home/vagrant/Code/aisdecoder not in flight; installing
+39 verbose lock using /home/vagrant/.npm/_locks/aisdecoder-fe989f17c0f9dc38.lock for /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+40 silly install write writing aisdecoder 0.0.2 to /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+41 silly cache addNamed cb aisdecoder@0.0.2
+42 verbose unbuild node_modules/aisdecoder
+43 silly gentlyRm /home/vagrant/Code/aisdecoder/node_modules/aisdecoder is being purged from base /home/vagrant/Code/aisdecoder
+44 verbose gentlyRm don't care about contents; nuking /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+45 verbose tar unpack /home/vagrant/.npm/aisdecoder/0.0.2/package.tgz
+46 verbose tar unpacking to /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+47 silly gentlyRm /home/vagrant/Code/aisdecoder/node_modules/aisdecoder is being purged
+48 verbose gentlyRm don't care about contents; nuking /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+49 silly gunzTarPerm modes [ '775', '664' ]
+50 silly gunzTarPerm extractEntry package.json
+51 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+52 silly gunzTarPerm extractEntry README.md
+53 silly gunzTarPerm modified mode [ 'README.md', 420, 436 ]
+54 silly gunzTarPerm extractEntry LICENSE
+55 silly gunzTarPerm modified mode [ 'LICENSE', 420, 436 ]
+56 silly gunzTarPerm extractEntry build/Makefile
+57 silly gunzTarPerm modified mode [ 'build/Makefile', 420, 436 ]
+58 silly gunzTarPerm extractEntry build/Release/.deps/Release/aisdecoder.node.d
+59 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/aisdecoder.node.d', 420, 436 ]
+60 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/addon.o.d
+61 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/addon.o.d',
+61 silly gunzTarPerm   420,
+61 silly gunzTarPerm   436 ]
+62 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/aisdecoder.o.d
+63 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/aisdecoder.o.d',
+63 silly gunzTarPerm   420,
+63 silly gunzTarPerm   436 ]
+64 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/aivdm_decode.o.d
+65 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/aivdm_decode.o.d',
+65 silly gunzTarPerm   420,
+65 silly gunzTarPerm   436 ]
+66 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/bits.o.d
+67 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/bits.o.d',
+67 silly gunzTarPerm   420,
+67 silly gunzTarPerm   436 ]
+68 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/driver_ais.o.d
+69 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/driver_ais.o.d',
+69 silly gunzTarPerm   420,
+69 silly gunzTarPerm   436 ]
+70 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/gpsd.o.d
+71 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/gpsd.o.d',
+71 silly gunzTarPerm   420,
+71 silly gunzTarPerm   436 ]
+72 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/hex.o.d
+73 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/hex.o.d',
+73 silly gunzTarPerm   420,
+73 silly gunzTarPerm   436 ]
+74 silly gunzTarPerm extractEntry build/Release/.deps/Release/obj.target/aisdecoder/src/strl.o.d
+75 silly gunzTarPerm modified mode [ 'build/Release/.deps/Release/obj.target/aisdecoder/src/strl.o.d',
+75 silly gunzTarPerm   420,
+75 silly gunzTarPerm   436 ]
+76 silly gunzTarPerm extractEntry build/Release/aisdecoder.node
+77 silly gunzTarPerm modified mode [ 'build/Release/aisdecoder.node', 493, 509 ]
+78 silly gunzTarPerm extractEntry build/Release/linker.lock
+79 silly gunzTarPerm modified mode [ 'build/Release/linker.lock', 420, 436 ]
+80 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/addon.o
+81 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/addon.o', 420, 436 ]
+82 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/aisdecoder.o
+83 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/aisdecoder.o',
+83 silly gunzTarPerm   420,
+83 silly gunzTarPerm   436 ]
+84 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/aivdm_decode.o
+85 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/aivdm_decode.o',
+85 silly gunzTarPerm   420,
+85 silly gunzTarPerm   436 ]
+86 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/bits.o
+87 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/bits.o', 420, 436 ]
+88 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/driver_ais.o
+89 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/driver_ais.o',
+89 silly gunzTarPerm   420,
+89 silly gunzTarPerm   436 ]
+90 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/gpsd.o
+91 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/gpsd.o', 420, 436 ]
+92 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/hex.o
+93 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/hex.o', 420, 436 ]
+94 silly gunzTarPerm extractEntry build/Release/obj.target/aisdecoder/src/strl.o
+95 silly gunzTarPerm modified mode [ 'build/Release/obj.target/aisdecoder/src/strl.o', 420, 436 ]
+96 silly gunzTarPerm extractEntry build/aisdecoder.target.mk
+97 silly gunzTarPerm modified mode [ 'build/aisdecoder.target.mk', 420, 436 ]
+98 silly gunzTarPerm extractEntry build/binding.Makefile
+99 silly gunzTarPerm modified mode [ 'build/binding.Makefile', 420, 436 ]
+100 silly gunzTarPerm extractEntry build/config.gypi
+101 silly gunzTarPerm modified mode [ 'build/config.gypi', 420, 436 ]
+102 silly gunzTarPerm extractEntry build/gyp-mac-tool
+103 silly gunzTarPerm modified mode [ 'build/gyp-mac-tool', 493, 509 ]
+104 silly gunzTarPerm extractEntry .travis.yml
+105 silly gunzTarPerm modified mode [ '.travis.yml', 420, 436 ]
+106 silly gunzTarPerm extractEntry binding.gyp
+107 silly gunzTarPerm modified mode [ 'binding.gyp', 420, 436 ]
+108 silly gunzTarPerm extractEntry binding.gyp~
+109 silly gunzTarPerm modified mode [ 'binding.gyp~', 420, 436 ]
+110 silly gunzTarPerm extractEntry .travis.yml~
+111 silly gunzTarPerm modified mode [ '.travis.yml~', 420, 436 ]
+112 silly gunzTarPerm extractEntry gyptest.txt
+113 silly gunzTarPerm modified mode [ 'gyptest.txt', 420, 436 ]
+114 silly gunzTarPerm extractEntry test/aisdecoder.test.js
+115 silly gunzTarPerm modified mode [ 'test/aisdecoder.test.js', 420, 436 ]
+116 silly gunzTarPerm extractEntry test/aisdecoder.test.js~
+117 silly gunzTarPerm modified mode [ 'test/aisdecoder.test.js~', 420, 436 ]
+118 silly gunzTarPerm extractEntry Makefile
+119 silly gunzTarPerm modified mode [ 'Makefile', 420, 436 ]
+120 silly gunzTarPerm extractEntry package.json~
+121 silly gunzTarPerm modified mode [ 'package.json~', 420, 436 ]
+122 silly gunzTarPerm extractEntry src/bits.h
+123 silly gunzTarPerm modified mode [ 'src/bits.h', 420, 436 ]
+124 silly gunzTarPerm extractEntry src/addon.cpp
+125 silly gunzTarPerm modified mode [ 'src/addon.cpp', 420, 436 ]
+126 silly gunzTarPerm extractEntry src/aisdecoder.cpp
+127 silly gunzTarPerm modified mode [ 'src/aisdecoder.cpp', 420, 436 ]
+128 silly gunzTarPerm extractEntry src/aisdecoder.h
+129 silly gunzTarPerm modified mode [ 'src/aisdecoder.h', 420, 436 ]
+130 silly gunzTarPerm extractEntry src/aivdm_decode.c
+131 silly gunzTarPerm modified mode [ 'src/aivdm_decode.c', 420, 436 ]
+132 silly gunzTarPerm extractEntry src/aivdm_decode.h
+133 silly gunzTarPerm modified mode [ 'src/aivdm_decode.h', 420, 436 ]
+134 silly gunzTarPerm extractEntry src/aivdm_decode.h~
+135 silly gunzTarPerm modified mode [ 'src/aivdm_decode.h~', 420, 436 ]
+136 silly gunzTarPerm extractEntry src/bits.c
+137 silly gunzTarPerm modified mode [ 'src/bits.c', 420, 436 ]
+138 silly gunzTarPerm extractEntry src/ais.h
+139 silly gunzTarPerm modified mode [ 'src/ais.h', 420, 436 ]
+140 silly gunzTarPerm extractEntry src/driver_ais.c
+141 silly gunzTarPerm modified mode [ 'src/driver_ais.c', 420, 436 ]
+142 silly gunzTarPerm extractEntry src/driver_ais.c~
+143 silly gunzTarPerm modified mode [ 'src/driver_ais.c~', 420, 436 ]
+144 silly gunzTarPerm extractEntry src/driver_ais.h
+145 silly gunzTarPerm modified mode [ 'src/driver_ais.h', 420, 436 ]
+146 silly gunzTarPerm extractEntry src/gpsd.c
+147 silly gunzTarPerm modified mode [ 'src/gpsd.c', 420, 436 ]
+148 silly gunzTarPerm extractEntry src/gpsd.h
+149 silly gunzTarPerm modified mode [ 'src/gpsd.h', 420, 436 ]
+150 silly gunzTarPerm extractEntry src/gpsd_config.h
+151 silly gunzTarPerm modified mode [ 'src/gpsd_config.h', 420, 436 ]
+152 silly gunzTarPerm extractEntry src/hex.c
+153 silly gunzTarPerm modified mode [ 'src/hex.c', 420, 436 ]
+154 silly gunzTarPerm extractEntry src/strl.c
+155 silly gunzTarPerm modified mode [ 'src/strl.c', 420, 436 ]
+156 info preinstall aisdecoder@0.0.2
+157 silly install resolved []
+158 verbose about to build /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+159 info build /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+160 verbose linkStuff [ false,
+160 verbose linkStuff   false,
+160 verbose linkStuff   false,
+160 verbose linkStuff   '/home/vagrant/Code/aisdecoder/node_modules' ]
+161 info linkStuff aisdecoder@0.0.2
+162 verbose linkBins aisdecoder@0.0.2
+163 verbose linkMans aisdecoder@0.0.2
+164 verbose rebuildBundles aisdecoder@0.0.2
+165 info install aisdecoder@0.0.2
+166 verbose unsafe-perm in lifecycle true
+167 info aisdecoder@0.0.2 Failed to exec install script
+168 verbose unlock done using /home/vagrant/.npm/_locks/aisdecoder-fe989f17c0f9dc38.lock for /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+169 verbose stack Error: aisdecoder@0.0.2 install: `node-gyp rebuild`
+169 verbose stack Exit status 1
+169 verbose stack     at EventEmitter.<anonymous> (/usr/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+169 verbose stack     at EventEmitter.emit (events.js:110:17)
+169 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+169 verbose stack     at ChildProcess.emit (events.js:110:17)
+169 verbose stack     at maybeClose (child_process.js:1015:16)
+169 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+170 verbose pkgid aisdecoder@0.0.2
+171 verbose cwd /home/vagrant/Code/aisdecoder
+172 error Linux 3.16.0-23-generic
+173 error argv "/usr/bin/node" "/usr/bin/npm" "install" "aisdecoder"
+174 error node v0.12.2
+175 error npm  v2.7.4
+176 error code ELIFECYCLE
+177 error aisdecoder@0.0.2 install: `node-gyp rebuild`
+177 error Exit status 1
+178 error Failed at the aisdecoder@0.0.2 install script 'node-gyp rebuild'.
+178 error This is most likely a problem with the aisdecoder package,
+178 error not with npm itself.
+178 error Tell the author that this fails on your system:
+178 error     node-gyp rebuild
+178 error You can get their info via:
+178 error     npm owner ls aisdecoder
+178 error There is likely additional logging output above.
+179 verbose exit [ 1, true ]
+180 verbose unbuild node_modules/aisdecoder
+181 info preuninstall aisdecoder@0.0.2
+182 info uninstall aisdecoder@0.0.2
+183 verbose unbuild rmStuff aisdecoder@0.0.2 from /home/vagrant/Code/aisdecoder/node_modules
+184 info postuninstall aisdecoder@0.0.2
+185 silly gentlyRm /home/vagrant/Code/aisdecoder/node_modules/aisdecoder is being purged from base /home/vagrant/Code/aisdecoder
+186 verbose gentlyRm don't care about contents; nuking /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+187 silly vacuum-fs purging /home/vagrant/Code/aisdecoder/node_modules/aisdecoder
+188 silly vacuum-fs quitting because other entries in /home/vagrant/Code/aisdecoder/node_modules

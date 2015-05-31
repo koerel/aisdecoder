@@ -6,7 +6,7 @@ var readline = require('readline');
 var dgram = require("dgram");
 var udpclient = dgram.createSocket("udp4");
 
-udpclient.bind(4010);
+udpclient.bind(4014);
 
 
 
@@ -19,7 +19,7 @@ var rd = readline.createInterface({
 rd.on('line', function(line) {
     console.log(line);
     line = line + "\n";
-    udpclient.send(line, 0, line.length, 4001, '192.168.1.76', function(err, bytes) {
+    udpclient.send(line, 0, line.length, 4001, '192.168.1.111', function(err, bytes) {
         if (err) throw err;
     });
 });

@@ -6,11 +6,12 @@ var udpserver = dgram.createSocket("udp4");
 var udpclient = dgram.createSocket("udp4");
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('/home/vagrant/Code/aisdecoder/ais.db');
+var db = new sqlite3.Database('./ais.db');
 var sys = require('sys')
-var child1 = require('child_process').spawn('./aisdispatcher', ['-u', '-h', '0.0.0.0', '-p', '4003', '-H', '192.168.1.76:5000']);
-var child2 = require('child_process').spawn('./gpsd', ['udp://192.168.1.76:5000']);
-var child = require('child_process').spawn('./gpspipe', ['-w', '-S']);
+var child1 = require('child_process').spawn('./aisdispatcher', ['-u', '-h', '0.0.0.0', '-p', '4003', '-H', '192.168.1.111:5000']);
+var child2 = require('child_process').spawn('./gpsd', ['udp://192.168.1.111:5000']);
+var child = require('child_process').spawn('./gpspipe', ['-w', '-S', '-2']);
+child.stdout.setEncoding('utf8');
 
 var ftpclient = require('ftp');
 var fs = require('fs');
@@ -33,20 +34,19 @@ var DRAUGHT;
 var DEST;
 var ETA;
 var TIME;
-var xml = "";
+var xml;
 var query;
 var obj;
 var i;
 var msg;
 var lines;
 var message;
-var mymessage;
 var curmmsi;
 
 udpserver.bind(4001);
 udpclient.bind(4002);
 
-setInterval(fetcher,500);
+setInterval(fetcher,2);
 
 udpserver.on("message",
     function (msg, rinfo) {
@@ -55,7 +55,7 @@ udpserver.on("message",
 );
 
 function fetcher () {
-    while (FIFO.length > 0) {
+    if (FIFO.length > 0) {
         msg = FIFO.shift();
         udpclient.send(msg, 0, msg.length, 4003, '127.0.0.1', function(err, bytes) {
 			if (err) throw err;
@@ -63,7 +63,21 @@ function fetcher () {
     }
 }
 
-function buildxml() {
+function buildxml(message) {
+    IMO = message.IMO ? message.IMO : "";
+    NAME = message.NAME ? message.NAME : "";
+    CALLSIGN = message.CALLSIGN ? message.CALLSIGN : "";
+    TYPE = message.TYPE ? message.TYPE : "";
+    A = message.A ? message.A : "";
+    B = message.B ? message.B : "";
+    C = message.C ? message.C : "";
+    D = message.D ? message.D : "";
+    DRAUGHT = message.DRAUGHT ? message.DRAUGHT : "";
+    DEST = message.DEST ? message.DEST : "";
+    ETA = message.ETA ? message.ETA : "";
+    ETA = ETA.replace("T", " ").replace("Z", "");
+    TIME = new Date().toISOString();
+    TIME = TIME.replace("T", " ").slice(0, -5).concat(" GMT");
     MMSI = obj['mmsi'];
     LONGITUDE = obj['lon'];
     LATITUDE = obj['lat'];
@@ -91,74 +105,54 @@ function buildxml() {
     xml += "  ETA=" + '"' + ETA + '"';
     xml += " />";
     console.log(xml);
-    xml = "";
-    MMSI = "";
-    LONGITUDE = "";
-    LATITUDE = "";
-    COG = "";
-    SOG = "";
-    NAVSTAT = "";
-    NAME = "";
 }
 
-console.log('Starting...');
+function writedb(obj) {
+    query = "REPLACE INTO MESSAGES (MMSI,IMO,NAME,CALLSIGN,TYPE,A,B,C,D,DRAUGHT,DEST,ETA) VALUES ("
+    + "'" + obj['mmsi'] + "',"
+    + "'" + obj['imo'] + "',"
+    + "'" + obj['shipname'] + "',"
+    + "'" + obj['callsign'] + "',"
+    + "'" + obj['shiptype'] + "',"
+    + "'" + obj['to_bow'] + "',"
+    + "'" + obj['to_stern'] + "',"
+    + "'" + obj['to_port'] + "',"
+    + "'" + obj['to_starboard'] + "',"
+    + "'" + obj['draught'] + "',"
+    + "'" + obj['destination'] + "',"
+    + "'" + obj['eta'] + "'" +
+    ")";
+    db.run(query);
+}
 
-child.stdout.setEncoding('utf8');
+function readdb(curmmsi,callback)
+{
+    db.get("SELECT MAX(rowid) AS IMO,NAME,CALLSIGN,TYPE,A,B,C,D,DRAUGHT,DEST,ETA FROM messages WHERE MMSI = " + curmmsi + " LIMIT 1", function (err, message) {
+        if (err) {console.log(err + 'eeeeeeee')}
+        if (message.NAME){
+            callback(message)
+        }
+    });
+}
 
 child.stdout.on('data', function(data) {
-		try {
-			lines = data.split("\r\n");
-   			for(i  in lines) {
-                if (lines[i].substring(0,1) == "{") {
-                    obj = JSON.parse(lines[i]);
-                    //console.log(obj);
-                    if (obj['type'] == 5) {
-                        query = "INSERT INTO MESSAGES (MMSI,IMO,NAME,CALLSIGN,TYPE,A,B,C,D,DRAUGHT,DEST,ETA) VALUES ("
-                        + "'" + obj['mmsi'] + "',"
-                        + "'" + obj['imo'] + "',"
-                        + "'" + obj['shipname'] + "',"
-                        + "'" + obj['callsign'] + "',"
-                        + "'" + obj['shiptype'] + "',"
-                        + "'" + obj['to_bow'] + "',"
-                        + "'" + obj['to_stern'] + "',"
-                        + "'" + obj['to_port'] + "',"
-                        + "'" + obj['to_starboard'] + "',"
-                        + "'" + obj['draught'] + "',"
-                        + "'" + obj['destination'] + "',"
-                        + "'" + obj['eta'] + "'" +
-                        ")";
-                        db.run(query);
-                    }
-                    if (obj['type'] == 1) {
-                        dbread = function(callback) { db.get("SELECT MAX(rowid) AS IMO,NAME,CALLSIGN,TYPE,A,B,C,D,DRAUGHT,DEST,ETA FROM messages WHERE MMSI = " + curmmsi + " LIMIT 1", function (err, message) {
-                            callback(curmmsi, err, message);
-                            //console.log(curmmsi);
-                        });
-                        }
-                        //console.log(message);
-                        curmmsi = obj['mmsi'];
-                        dbread(function(currmmsi, err, message){
-                            IMO = message.IMO ? message.IMO : "";
-                            NAME = message.NAME ? message.NAME : "";
-                            CALLSIGN = message.CALLSIGN ? message.CALLSIGN : "";
-                            TYPE = message.TYPE ? message.TYPE : "";
-                            A = message.A ? message.A : "";
-                            B = message.B ? message.B : "";
-                            C = message.C ? message.C : "";
-                            D = message.D ? message.D : "";
-                            DRAUGHT = message.DRAUGHT ? message.DRAUGHT : "";
-                            DEST = message.DEST ? message.DEST : "";
-                            ETA = message.ETA ? message.ETA : "";
-                            ETA = ETA.replace("T", " ").replace("Z", "");
-                            TIME = new Date().toISOString();
-                            TIME = TIME.replace("T", " ").slice(0, -5).concat(" GMT");
-                        });
-                        if (NAME) { buildxml(obj,NAME,CALLSIGN); }
-                    }
-                }
-	  		}	
-		}	
-  		catch(err) {
-  		}
+    lines = data.split("\r\n");
+    for(i  in lines) {
+        if (lines[i].substring(0,1) == "{") {
+            try {
+                obj = JSON.parse(lines[i]);
+            } catch (err) {
+                console.log(err);
+                console.log(lines[i])
+            }
+            if (obj['type'] == 5) {
+                writedb(obj);
+            } else if (obj['type'] == 1 || obj['type'] == 3) {
+                curmmsi = obj['mmsi'];
+                readdb(curmmsi,buildxml);
+            } else {
+            }
+        }
+    }
 });
 
