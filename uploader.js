@@ -9,4 +9,3 @@ c.on('ready', function() {
     });
 });
 // connect to localhost:21 as anonymous
-c.connect({'host':'stephanebvba.be','user':'stream4@stephanebvba.be','password':'laUJM{Cy1p@2'});
